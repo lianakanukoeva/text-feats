@@ -1,0 +1,194 @@
+/* чтобы расположить по всему экрану*/
+body
+{
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+	line-height: 1.42;
+	position: relative;
+}
+
+*, *::before, after
+{
+	box-sizing: border-box;
+}
+
+body, html
+{
+	width: 100%;
+	height: 100%;
+}
+.wrapper {
+	position: relative;
+	min-width: 100%; 
+	height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+    background-color: #071c71;
+}
+.page-content{
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    left: 0;
+    right: 0;
+}
+.page-content__video::before{
+    content: " ";
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+video{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+/* градиент для заголовка */
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    font-weight: 800;
+    color: #3F8FD2;
+    /* градиент на фон */
+    background: linear-gradient(45deg, #6CAAE6, #ACD0F3 70%);
+    /* прозрачный текст */
+    -webkit-text-fill-color: transparent;
+    /* оставляем фон только для текста */
+    -webkit-background-clip: text;
+}
+
+
+
+/* неоновая кнопка */
+/* сама кнопка */
+.neon{
+    position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    margin: auto;
+    color: #2196f3;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 24px;
+    /* расстояние между символами */
+    letter-spacing: 3px;
+    overflow: hidden;
+    transition: 0.2s;
+}
+/* позиционирование для обводки, которая будет при анимации*/
+.button__line{
+    position: absolute;
+    display: block;
+}
+/* верхняя обводка */
+.top{
+    /* располагаеи сверху и скрывем слева от кнопки */
+    top: 0;
+    left: -100%;
+    /* стилизуем как линию с градиентом */
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #2196f3);
+}
+.neon:hover .top{
+    /* при наведении плавно проходит по краю
+    и скрывается справа от кнопки*/
+    left: 100%;
+    transition: 1s;
+    transition-delay: 0s;
+}
+/* обводка справа */
+/* аналогичная анимация */
+.right{
+    right: 0;
+    top: -100%;
+    height: 100%;
+    width: 2px;
+    background: linear-gradient(180deg, transparent, #2196f3);
+}
+.neon:hover .right{
+    top: 100%;
+    transition: 1s;
+    transition-delay: 0.25s;
+}
+/* обводка снизу */
+/* аналогичная анимация */
+.bottom{
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(-90deg, transparent, #2196f3);
+}
+.neon:hover .bottom{
+    right: 100%;
+    transition: 1s;
+    transition-delay: 0s;
+}
+/* обводка слева */
+/* аналогичная анимация */
+.left{
+    left: 0;
+    bottom: -100%;
+    height: 100%;
+    width: 2px;
+    background: linear-gradient(0, transparent, #2196f3);
+}
+.neon:hover .left{
+    bottom: 100%;
+    transition: 1s;
+    transition-delay: 0.25s;
+}
+/* ставятся большие тени того же цвета, что и кнопка 
+   после анимации с обводкой(ставится определенное количество секунд) */
+.neon:hover{
+    box-shadow: 0 0 10px #2196f3, 0 0 30px #2196f3, 0 0 50px #2196f3;
+    background-color: #2196f3;
+    color: white;
+    transition-delay: 0.6s;
+}
+
+
+
+/* эффект нажатия */
+button{
+    width: 300px;
+    height: 80px;
+    margin: auto;
+    font-size: 40px;
+    color: white;
+    letter-spacing: 3px;
+    border: 0;
+    /* ставим тени */
+    background-color: #2196f3;
+    box-shadow: 0 2px 4px -1px #2196f3;
+}
+/* приподнимаем при наведении и увеличиваем тень */
+button:hover{
+    box-shadow: 0 2px 10px -1px #2196f3,
+    0 4px 5px 0 #2196f3,
+    0 1px 10px 0 #2196f3;
+    transform: translateY(-2px);
+}
+/* опускаем при нажатии */
+button:active{
+    outline: none;
+    border: none;
+    box-shadow: 0 0 0 0;
+    transform: translateY(2px);
+}
